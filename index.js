@@ -19,22 +19,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addTask(taskText) {
         const li = document.createElement('li');
+        li.className = 'list-group-item';
         li.textContent = taskText;
 
+        const buttonGroup = document.createElement('div');
+
         const completeButton = document.createElement('button');
+        completeButton.className = 'btn btn-success btn-sm';
         completeButton.textContent = 'Complete';
         completeButton.addEventListener('click', () => {
             li.classList.toggle('completed');
         });
 
         const deleteButton = document.createElement('button');
+        deleteButton.className = 'btn btn-danger btn-sm';
         deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', () => {
             todoList.removeChild(li);
         });
 
-        li.appendChild(completeButton);
-        li.appendChild(deleteButton);
+        buttonGroup.appendChild(completeButton);
+        buttonGroup.appendChild(deleteButton);
+        li.appendChild(buttonGroup);
         todoList.appendChild(li);
     }
 });
